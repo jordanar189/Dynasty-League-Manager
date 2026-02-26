@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ league_snapshot.league.name }} | Dynasty League Manager{% endblock %}
+
+{% block content %}
+<section class="card">
+  <h2>{{ league_snapshot.league.name }}</h2>
+  <p>Season: {{ league_snapshot.league.season }} | Teams: {{ league_snapshot.league.total_rosters }} | Week: {{ league_snapshot.week }}</p>
+</section>
+
+<section class="card">
+  <h3>Teams & Lineups</h3>
+  <div class="grid-two">
+    {% for team in league_snapshot.teams %}
+    <article class="subcard">
+      <h4>#{{ team.roster_id }} {{ team.team_name }}</h4>
+      <p>Owner: {{ team.owner }}</p>
+      <p>Record: {{ team.wins }}-{{ team.losses }}{% if team.ties %}-{{ team.ties }}{% endif %}</p>
+      <p><strong>Starters:</strong> {{ team.starters|join(', ') if team.starters else 'N/A' }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="card">
+  <h3>Matchups</h3>
+  {% if league_snapshot.matchups %}
+    {% for matchup_id, entries in league_snapshot.matchups.items() %}
+      <article class="subcard">
+        <h4>Matchup {{ matchup_id }}</h4>
+        <ul>
+          {% for entry in entries %}
+          <li>Roster {{ entry.roster_id }} — {{ entry.points }} pts</li>
+          {% endfor %}
+        </ul>
+      </article>
+    {% endfor %}
+  {% else %}
+    <p>No matchup data available for this week.</p>
+  {% endif %}
+</section>
+
+<p><a href="{{ url_for('main.index') }}">Load another league</a></p>
+{% endblock %}

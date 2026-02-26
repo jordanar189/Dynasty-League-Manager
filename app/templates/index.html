@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Dynasty League Manager{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('main.league_view') }}" method="get" class="card form-grid">
+  <label for="league_id">Sleeper League ID</label>
+  <input id="league_id" name="league_id" type="text" value="{{ league_id or '' }}" placeholder="e.g. 123456789012345678" required />
+
+  <label for="week">Week (optional)</label>
+  <input id="week" name="week" type="number" min="1" value="{{ week or '' }}" placeholder="Current week by default" />
+
+  <button type="submit">Load League</button>
+</form>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+{% endblock %}
