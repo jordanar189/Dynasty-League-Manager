@@ -1,0 +1,61 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+  background: #f6f7fb;
+  margin: 0;
+  color: #171a21;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.subcard {
+  border: 1px solid #e6e8ee;
+  border-radius: 10px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+input,
+button {
+  padding: 0.55rem;
+  border-radius: 8px;
+  border: 1px solid #d0d5df;
+}
+
+button {
+  background: #2459f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.error {
+  color: #b42318;
+  font-weight: 600;
+}
